@@ -53,12 +53,12 @@ function coordinates(array, int) {
 function find(array, val) {
 
   const x = outerSearch(array, val);
-
+  if (!x) return -1;
   if (x) return x;
 
 }
 
-function outerSearch(array, val, left = 0, right = array.length - 1) {
+function outerSearch(array, val, left = 0, right = array.length) {
   const midpoint = Math.floor((right - left)/2);
   console.log(midpoint)
   const innerArray = array[midpoint];
@@ -66,9 +66,11 @@ function outerSearch(array, val, left = 0, right = array.length - 1) {
     return midpoint;
   }
   else if (val < innerArray[0]){
-    outerSearch(array, val, left, midpoint);
+    outerSearch(array, val, left, midpoint - 1);
   }
-  else if (val > innerArray[])
+  else if (val > innerArray[innerArray.length - 1]) {
+    outerSearch(array, val, midpoint + 1, right);
+  }
 }
 
 
