@@ -170,3 +170,22 @@ function mergeLinkedLists( headA, headB) {
 
     return retNode;
 }
+
+
+function getNodeValue( head, positionFromTail) {
+
+    let length = 1;
+    let pointer = head;
+
+    while (pointer.next) {
+        length++;
+        pointer = pointer.next;
+    }
+
+    let target = head;
+    for (let i = 1; i < length - positionFromTail; i ++) {
+        target = target.next;
+    }
+
+    return target.data;
+}
