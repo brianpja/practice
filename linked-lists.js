@@ -189,3 +189,57 @@ function getNodeValue( head, positionFromTail) {
 
     return target.data;
 }
+
+
+function removeDuplicates(head) {
+    let current = head;
+    let next = current.next;
+
+    while (current.next) {
+        if (current.data === next.data) {
+            current.next = next.next;
+            next = next.next;
+        }
+        else {
+            current = current.next;
+            next = current.next;
+        }
+    }
+    return head;
+}
+
+//list is guaranteed to have max length of 100
+function hasCycle(head) {
+    let current = head;
+    let length = 0;
+
+    while (current && length < 101) {
+        length ++;
+        current = current.next;
+    }
+
+    if (length <= 100) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
+
+function findMergeNode(headA, headB) {
+    const hash = {};
+
+    let aPointer = headA;
+    while (aPointer) {
+        hash[aPointer.data] = 1;
+        aPointer = aPointer.next;
+    }
+
+    let bPointer = headB;
+
+    while (bPointer) {
+        if (hash[bPointer.data]) return bPointer.data;
+        bPointer = bPointer.next;
+    }
+}
