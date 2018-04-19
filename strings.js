@@ -30,3 +30,15 @@ function super_reduced_string(s){
         return 'Empty String'
     }
 }
+
+
+//returns number of words in a camelcase String
+function camelcase(s) {
+    let count = 1;
+    for (let i = 0; i < s.length; i ++) {
+        if (s.charCodeAt(i) >= 65 && s.charCodeAt(i) <= 90) {
+           count++;
+        }
+    }
+    return count;
+}
